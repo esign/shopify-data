@@ -1,0 +1,25 @@
+<?php
+
+namespace Esign\ShopifyData\Enums;
+
+/**
+ * Specifies the attribute of a product being used to populate a smart collection.
+ */
+enum CollectionRuleColumn: string
+{
+    case IS_PRICE_REDUCED = 'IS_PRICE_REDUCED';
+    case PRODUCT_CATEGORY_ID = 'PRODUCT_CATEGORY_ID';
+    case PRODUCT_CATEGORY_ID_WITH_DESCENDANTS = 'PRODUCT_CATEGORY_ID_WITH_DESCENDANTS';
+    case PRODUCT_METAFIELD_DEFINITION = 'PRODUCT_METAFIELD_DEFINITION';
+    case PRODUCT_TAXONOMY_NODE_ID = 'PRODUCT_TAXONOMY_NODE_ID';
+    case TAG = 'TAG';
+    case TITLE = 'TITLE';
+    case TYPE = 'TYPE';
+    case VARIANT_COMPARE_AT_PRICE = 'VARIANT_COMPARE_AT_PRICE';
+    case VARIANT_INVENTORY = 'VARIANT_INVENTORY';
+    case VARIANT_METAFIELD_DEFINITION = 'VARIANT_METAFIELD_DEFINITION';
+    case VARIANT_PRICE = 'VARIANT_PRICE';
+    case VARIANT_TITLE = 'VARIANT_TITLE';
+    case VARIANT_WEIGHT = 'VARIANT_WEIGHT';
+    case VENDOR = 'VENDOR';
+}
