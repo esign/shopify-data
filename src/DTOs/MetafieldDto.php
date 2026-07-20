@@ -23,7 +23,6 @@ class MetafieldDto extends Data
         public ?string $key = null,
         public ?string $value = null,
         public ?string $type = null,
-        public ?string $ownerId = null,
         public ?MetafieldOwnerType $ownerType = null,
         public ?string $createdAt = null,
         public ?string $updatedAt = null,
