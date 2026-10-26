@@ -10,13 +10,13 @@ Admin API objects, so it can be used with any GraphQL client.
 
 ## Versioning
 
-Releases track **Shopify Admin API versions**: tag `2026.07.x` matches API
-version `2026-07`. Patch releases within a tag fix mappings without changing
+Releases track **Shopify Admin API versions**: tag `2026.10.x` matches API
+version `2026-10`. Patch releases within a tag fix mappings without changing
 the targeted API version. Pin the release line that matches the `api_version`
 your app uses:
 
 ```bash
-composer require esign/shopify-data:^2026.07
+composer require esign/shopify-data:^2026.10
 ```
 
 ## What's inside

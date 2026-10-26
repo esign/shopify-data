@@ -12,7 +12,6 @@ enum CurrencyCode: string
     case AFN = 'AFN';
     case ALL = 'ALL';
     case AMD = 'AMD';
-    case ANG = 'ANG';
     case AOA = 'AOA';
     case ARS = 'ARS';
     case AUD = 'AUD';
@@ -161,6 +160,7 @@ enum CurrencyCode: string
     case WST = 'WST';
     case XAF = 'XAF';
     case XCD = 'XCD';
+    case XCG = 'XCG';
     case XOF = 'XOF';
     case XPF = 'XPF';
     case XXX = 'XXX';
@@ -168,10 +168,12 @@ enum CurrencyCode: string
     case ZAR = 'ZAR';
     case ZMW = 'ZMW';
 
-    /** @deprecated */
+    /** @deprecated Use XCG (Caribbean Guilder) instead. */
+    case ANG = 'ANG';
+    /** @deprecated Use BYN (new Belarusian ruble) instead. */
     case BYR = 'BYR';
-    /** @deprecated */
+    /** @deprecated Use STN (new São Tomé and Príncipe dobra) instead. */
     case STD = 'STD';
-    /** @deprecated */
+    /** @deprecated Use VES (Venezuelan bolívar soberano) instead. */
     case VEF = 'VEF';
 }

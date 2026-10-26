@@ -19,5 +19,7 @@ class MarketCreateInput extends BaseInput
         public ?string $status = null,
         /** @var array|null MarketConditionsInput value. */
         public ?array $conditions = null,
+        /** When omitted, the market inherits the return policy profile of its parent market. */
+        public ?string $returnPolicyProfileId = null,
     ) {}
 }

@@ -19,6 +19,7 @@ class OrderTransactionDto extends Data
         public ?string $status = null,
         public ?string $gateway = null,
         public ?string $errorCode = null,
+        /** @deprecated Use $paymentId instead. */
         public ?string $authorizationCode = null,
         public ?string $authorizationExpiresAt = null,
         public ?string $accountNumber = null,

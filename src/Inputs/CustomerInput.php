@@ -22,6 +22,7 @@ class CustomerInput extends BaseInput
         public ?string $locale = null,
         public ?string $note = null,
         public ?array $tags = null,
+        /** @deprecated Use the customerAddressCreate, customerAddressUpdate and customerAddressDelete mutations instead. */
         public ?array $addresses = null,
         public ?array $metafields = null,
         public ?bool $taxExempt = null,

@@ -15,6 +15,7 @@ class DiscountEffectInput extends BaseInput
 {
     public function __construct(
         public ?float $percentage = null,
-        public ?DiscountAmountInput $amount = null,
+        /** Decimal string. */
+        public ?string $amount = null,
     ) {}
 }

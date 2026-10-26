@@ -28,6 +28,7 @@ class CollectionDto extends Data
         public ?string $templateSuffix = null,
         public ?ImageDto $image = null,
         public ?SEODto $seo = null,
+        /** @deprecated Use the `sources` field instead. */
         public ?CollectionRuleSetDto $ruleSet = null,
         public ?CountDto $productsCount = null,
         #[WithCast(NodesToCollectionOfModelsCaster::class, model: ProductDto::class)]

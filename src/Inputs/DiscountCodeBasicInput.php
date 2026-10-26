@@ -22,7 +22,7 @@ class DiscountCodeBasicInput extends BaseInput
         public ?int $usageLimit = null,
         public ?bool $appliesOncePerCustomer = null,
         public ?int $recurringCycleLimit = null,
-        /** @deprecated Shopify deprecated this input field in favour of `context`. */
+        /** @deprecated Use `context` instead. */
         public ?DiscountCustomerSelectionInput $customerSelection = null,
         public ?DiscountCustomerGetsInput $customerGets = null,
         public ?DiscountMinimumRequirementInput $minimumRequirement = null,

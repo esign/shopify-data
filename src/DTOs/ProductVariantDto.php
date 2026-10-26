@@ -21,7 +21,10 @@ class ProductVariantDto extends Data
         public ?string $id = null,
         public ?string $title = null,
         public ?string $sku = null,
+        /** @deprecated As of 2026-10, returns only the first barcode; use $barcodes instead. */
         public ?string $barcode = null,
+        #[WithCast(NodesToCollectionOfModelsCaster::class, model: ProductVariantBarcodeDto::class)]
+        public ?Collection $barcodes = null,
         public ?string $price = null,
         public ?string $compareAtPrice = null,
         public ?ProductDto $product = null,

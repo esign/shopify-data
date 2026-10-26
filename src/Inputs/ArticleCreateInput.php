@@ -14,13 +14,13 @@ use Esign\ShopifyData\Inputs\Base\BaseInput;
 class ArticleCreateInput extends BaseInput
 {
     public function __construct(
-        public string $blogId,
         public string $title,
+        /** @var array AuthorInput value ({name} or {userId}). */
+        public array $author,
+        public ?string $blogId = null,
         public ?string $body = null,
         public ?string $summary = null,
         public ?string $handle = null,
-        /** @var array|null ArticleAuthorInput value ({name}). */
-        public ?array $author = null,
         /** @var string[]|null */
         public ?array $tags = null,
         public ?bool $isPublished = null,
