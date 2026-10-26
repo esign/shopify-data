@@ -24,6 +24,7 @@ class MetafieldDto extends Data
         public ?string $value = null,
         public ?string $type = null,
         public ?MetafieldOwnerType $ownerType = null,
+        public ?bool $translatable = null,
         public ?string $createdAt = null,
         public ?string $updatedAt = null,
     ) {}

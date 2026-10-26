@@ -21,11 +21,17 @@ class MarketDto extends Data
         public ?string $id = null,
         public ?string $name = null,
         public ?string $handle = null,
+        /** @deprecated Will be removed in a future API version; Shopify names no replacement. */
         public ?bool $primary = null,
         public ?string $status = null,
         public ?string $type = null,
         /** Union/object type (MarketConditions), kept as raw array. */
         public ?array $conditions = null,
+        #[WithCast(NodesToCollectionOfModelsCaster::class, model: MarketDto::class)]
+        public ?Collection $parentMarkets = null,
+        #[WithCast(NodesToCollectionOfModelsCaster::class, model: MarketDto::class)]
+        public ?Collection $childMarkets = null,
+        public ?ReturnPolicyProfileDto $returnPolicyProfile = null,
         #[WithCast(NodesToCollectionOfModelsCaster::class, model: MetafieldDto::class)]
         public ?Collection $metafields = null,
     ) {}

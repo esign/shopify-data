@@ -4,16 +4,21 @@ namespace Esign\ShopifyData\Tests\Unit;
 
 use Esign\ShopifyData\DTOs\CollectionDto;
 use Esign\ShopifyData\DTOs\CollectionRuleDto;
+use Esign\ShopifyData\DTOs\CustomerPhoneNumberDto;
+use Esign\ShopifyData\DTOs\CustomerSmsMarketingConsentDto;
 use Esign\ShopifyData\DTOs\DraftOrderDto;
 use Esign\ShopifyData\DTOs\DraftOrderLineItemDto;
 use Esign\ShopifyData\DTOs\FulfillmentOrderDto;
 use Esign\ShopifyData\DTOs\FulfillmentOrderLineItemDto;
 use Esign\ShopifyData\DTOs\InventoryLevelDto;
 use Esign\ShopifyData\DTOs\LineItemDto;
+use Esign\ShopifyData\DTOs\MarketDto;
 use Esign\ShopifyData\DTOs\MoneyV2Dto;
 use Esign\ShopifyData\DTOs\OrderTransactionDto;
 use Esign\ShopifyData\DTOs\ProductDto;
+use Esign\ShopifyData\DTOs\ProductVariantBarcodeDto;
 use Esign\ShopifyData\DTOs\ProductVariantDto;
+use Esign\ShopifyData\DTOs\ReturnPolicyProfileDto;
 use Esign\ShopifyData\DTOs\TaxLineDto;
 use Esign\ShopifyData\Enums\CountryCode;
 use Esign\ShopifyData\Enums\CurrencyCode;
@@ -167,6 +172,54 @@ class DtoHydrationTest extends TestCase
         ]);
 
         $this->assertSame(['paid_amount' => '5.00'], $transaction->receiptJson);
+    }
+
+    public function test_hydrates_product_variant_barcodes_connection(): void
+    {
+        $variant = ProductVariantDto::from([
+            'id' => 'gid://shopify/ProductVariant/1',
+            'barcodes' => [
+                'nodes' => [
+                    ['value' => '9780262033848', 'type' => 'ISBN'],
+                    ['value' => '012345678905', 'type' => null],
+                ],
+            ],
+        ]);
+
+        $this->assertCount(2, $variant->barcodes);
+        $this->assertInstanceOf(ProductVariantBarcodeDto::class, $variant->barcodes->first());
+        $this->assertSame('ISBN', $variant->barcodes->first()->type);
+        $this->assertNull($variant->barcodes->last()->type);
+    }
+
+    public function test_hydrates_customer_phone_number_sms_marketing_consent(): void
+    {
+        $phone = CustomerPhoneNumberDto::from([
+            'phoneNumber' => '+32470000000',
+            'smsMarketingConsent' => [
+                'state' => 'SUBSCRIBED',
+                'optInLevel' => 'SINGLE_OPT_IN',
+                'updatedAt' => '2026-10-01T00:00:00Z',
+            ],
+        ]);
+
+        $this->assertInstanceOf(CustomerSmsMarketingConsentDto::class, $phone->smsMarketingConsent);
+        $this->assertSame('SUBSCRIBED', $phone->smsMarketingConsent->state);
+    }
+
+    public function test_hydrates_market_hierarchy_and_return_policy_profile(): void
+    {
+        $market = MarketDto::from([
+            'id' => 'gid://shopify/Market/1',
+            'parentMarkets' => ['nodes' => [['id' => 'gid://shopify/Market/2', 'name' => 'Europe']]],
+            'childMarkets' => ['edges' => []],
+            'returnPolicyProfile' => ['id' => 'gid://shopify/ReturnPolicyProfile/1', 'default' => true],
+        ]);
+
+        $this->assertSame('Europe', $market->parentMarkets->first()->name);
+        $this->assertCount(0, $market->childMarkets);
+        $this->assertInstanceOf(ReturnPolicyProfileDto::class, $market->returnPolicyProfile);
+        $this->assertTrue($market->returnPolicyProfile->default);
     }
 
     public function test_giant_enums_contain_expected_values(): void

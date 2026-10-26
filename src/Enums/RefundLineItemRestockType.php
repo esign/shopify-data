@@ -8,6 +8,7 @@ namespace Esign\ShopifyData\Enums;
 enum RefundLineItemRestockType: string
 {
     case CANCEL = 'CANCEL';
+    /** @deprecated Not accepted for new refunds; use RETURN (fulfilled) or CANCEL (unfulfilled). */
     case LEGACY_RESTOCK = 'LEGACY_RESTOCK';
     case NO_RESTOCK = 'NO_RESTOCK';
     case RETURN = 'RETURN';

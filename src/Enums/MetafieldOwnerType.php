@@ -34,7 +34,8 @@ enum MetafieldOwnerType: string
     case PRODUCTVARIANT = 'PRODUCTVARIANT';
     case SELLING_PLAN = 'SELLING_PLAN';
     case SHOP = 'SHOP';
+    case TRANSFER = 'TRANSFER';
     case VALIDATION = 'VALIDATION';
-    /** @deprecated MEDIA_IMAGE is deprecated. */
+    /** @deprecated Shopify deprecated this owner type without naming a replacement. */
     case MEDIA_IMAGE = 'MEDIA_IMAGE';
 }

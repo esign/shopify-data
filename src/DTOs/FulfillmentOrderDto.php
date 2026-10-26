@@ -23,6 +23,7 @@ class FulfillmentOrderDto extends Data
         public ?string $requestStatus = null,
         public ?string $orderId = null,
         public ?string $orderName = null,
+        /** @deprecated Use `order.attribution.handle` instead (not mapped on OrderDto). */
         public ?string $channelId = null,
         public ?FulfillmentOrderAssignedLocationDto $assignedLocation = null,
         public ?FulfillmentOrderDestinationDto $destination = null,

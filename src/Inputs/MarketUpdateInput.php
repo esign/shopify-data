@@ -19,5 +19,7 @@ class MarketUpdateInput extends BaseInput
         public ?string $status = null,
         /** @var array|null MarketConditionsUpdateInput value. */
         public ?array $conditions = null,
+        public ?string $returnPolicyProfileId = null,
+        public ?bool $removeReturnPolicyProfile = null,
     ) {}
 }

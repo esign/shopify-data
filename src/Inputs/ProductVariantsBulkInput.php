@@ -17,7 +17,10 @@ class ProductVariantsBulkInput extends BaseInput
 {
     public function __construct(
         public ?string $id = null,
+        /** @deprecated As of 2026-10, use $barcodes instead. Cannot be combined with $barcodes. */
         public ?string $barcode = null,
+        /** @var BarcodeInput[]|null Replaces the variant's entire barcode set (max 20). */
+        public ?array $barcodes = null,
         public ?string $price = null,
         public ?string $compareAtPrice = null,
         public ?string $inventoryPolicy = null,

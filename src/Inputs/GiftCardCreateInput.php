@@ -14,8 +14,9 @@ use Esign\ShopifyData\Inputs\Base\BaseInput;
 class GiftCardCreateInput extends BaseInput
 {
     public function __construct(
-        /** The initial value of the gift card, as a decimal string. */
-        public string $initialValue,
+        /** @deprecated As of 2026-10, use $initialAmount instead. Decimal string. */
+        public ?string $initialValue = null,
+        public ?MoneyInput $initialAmount = null,
         public ?string $code = null,
         public ?string $customerId = null,
         public ?string $expiresOn = null,

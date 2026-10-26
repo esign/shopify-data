@@ -9,5 +9,6 @@ enum DiscountApplicationAllocationMethod: string
 {
     case ACROSS = 'ACROSS';
     case EACH = 'EACH';
+    /** @deprecated Use ACROSS instead. */
     case ONE = 'ONE';
 }
